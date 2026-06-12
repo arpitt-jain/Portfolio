@@ -9,7 +9,7 @@ export default function TextReveal() {
   // Track scroll progress of this section
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start 80%", "end 50%"]
   });
 
   const text = "The best ideas begin as questions. Building is simply how I search for the answers."
@@ -18,19 +18,19 @@ export default function TextReveal() {
   return (
     <section 
       ref={containerRef} 
-      className="relative w-full h-[80vh] bg-background border-b border-borderLine"
+      className="relative w-full py-24 md:py-40 bg-background border-b border-borderLine"
       id="reveal-text"
     >
       {/* Background Grid Noise Overlay */}
       <div className="noise-overlay" />
 
-      {/* Sticky container that stays in viewport while scrolling */}
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden px-25 md:px-20">
-        <div className="max-w-[640px] w-full text-center">
+      {/* Container that stays in viewport while scrolling */}
+      <div className="w-full flex items-center justify-center px-6 md:px-12">
+        <div className="max-w-[840px] w-full text-center">
           <p className="font-archivo font-medium text-2xl sm:text-4xl lg:text-[36px] leading-[1.25] tracking-[-0.02em] text-center select-none flex flex-wrap justify-center gap-x-[0.3em] gap-y-[0.1em]">
             {words.map((word, index) => {
-              const start = 0.2 + (index / words.length) * 0.5;
-              const end = start + (1.5 / words.length) * 0.5;
+              const start = index / words.length;
+              const end = start + (1 / words.length);
 
               return (
                 <Word 

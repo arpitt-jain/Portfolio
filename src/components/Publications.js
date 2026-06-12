@@ -6,7 +6,7 @@ const POSTS = [
   {
     date: 'Jan 20, 2026',
     title: 'Web3 Meets Banking: A New Era of Secure Customer Engagement',
-    description: 'Leveraging LSTM networks to predict smart contract vulnerabilities in decentralised protocolsLeveraging LSTM networks to predict smart contract vulnerabilities in decentralised protocolsLeveraging LSTM networks to predict smart contract vulnerabilities in decentralised protocolsLeveraging LSTM networks to predict smart contract vulnerabilities in decentralised protocols.',
+    description: 'Exploring how Web3 technologies can strengthen security, trust, and customer engagement in modern banking systems through decentralized authentication and blockchain-based solutions.',
     link: 'https://ieeexplore.ieee.org/document/11337358'
   },
   
@@ -75,13 +75,14 @@ export default function Publications() {
 
             {/* Content text */}
             <p className="font-clash text-lg md:text-xl font-normal text-white leading-snug z-10">
-              See how we shape modern software structures with clarity and craft— explore the full research archive.
+            Research is where curiosity becomes understanding. Explore the work, ideas, and questions that shaped my journey.
+
             </p>
 
             {/* Custom Pill button matching Majd's */}
             <div className="z-10 pt-4">
               <a 
-                href="#contact"
+                href="https://ieeexplore.ieee.org/document/11337358" target="_blank"
                 className="group inline-flex items-center gap-3 bg-white text-[#111111] rounded-full pl-5 pr-2 py-2 font-archivo text-[10px] font-semibold tracking-wider uppercase hover:bg-opacity-90 transition-all shadow border border-white/10"
               >
                 <span>Read Research</span>

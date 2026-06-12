@@ -5,12 +5,23 @@ import { useRef } from 'react';
 
 export default function Hero() {
   const containerRef = useRef(null);
+  const heroTitleRef = useRef(null);
   
   // Track scroll inside the hero intro for the sticky 3D card rotation
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
+
+  // Track scroll for the hero title section
+  const { scrollYProgress: titleScroll } = useScroll({
+    target: heroTitleRef,
+    offset: ["start start", "end start"]
+  });
+
+  const titleScale = useTransform(titleScroll, [0, 1], [1, 0.85]);
+  const titleOpacity = useTransform(titleScroll, [0, 0.8], [1, 0]);
+  const titleY = useTransform(titleScroll, [0, 1], [0, 150]);
 
   // Map scroll progress to 3D rotation of the profile card
   const rotateY = useTransform(scrollYProgress, [0.3, 0.7], [0, 180]);
@@ -23,7 +34,7 @@ export default function Hero() {
       <div className="noise-overlay" />
 
       {/* SECTION 1: HERO TITLE (100vh) */}
-      <section className="relative w-full h-screen flex flex-col justify-between px-6 md:px-12 py-12 overflow-hidden border-b border-borderLine">
+      <section ref={heroTitleRef} className="relative w-full h-screen flex flex-col justify-between px-6 md:px-12 py-12 overflow-hidden border-b border-borderLine">
         {/* Empty top spacer for nav spacing */}
         <div className="h-20" />
 
@@ -45,10 +56,13 @@ export default function Hero() {
           </motion.div>
 
           {/* Huge Heading H1 */}
-          <h1 className="font-archivo font-extrabold text-[46px] sm:text-[120px] lg:text-[174px] leading-[0.88] tracking-[-0.03em] text-textPrimary text-center select-none uppercase z-10">
+          <motion.h1 
+            style={{ scale: titleScale, opacity: titleOpacity, y: titleY }}
+            className="font-archivo font-extrabold text-[46px] sm:text-[120px] lg:text-[174px] leading-[0.88] tracking-[-0.03em] text-textPrimary text-center select-none uppercase z-10"
+          >
             <span className="block opacity-90">SOFTWARE</span>
             <span className="block opacity-95">ENGINEER</span>
-          </h1>
+          </motion.h1>
 
           {/* Floating Shape 2 (Bottom-Right overlay) */}
           <motion.div 
@@ -69,7 +83,7 @@ export default function Hero() {
         {/* Hero Bottom Bar Info */}
         <div className="max-w-[1180px] w-full mx-auto flex items-center justify-between font-archivo text-[11px] font-semibold tracking-wider text-textPrimary border-t border-borderLine/30 pt-6">
           <div>©2026</div>
-          <div className="opacity-60">/CREATING SINCE 2024</div>
+          <div className="opacity-60">/CREATING SINCE 2022</div>
         </div>
       </section>
 
@@ -89,20 +103,20 @@ export default function Hero() {
                 className="w-full h-full relative perspective-card"
               >
                 {/* Front Side: Portrait Photo */}
-                <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-white border border-borderLine shadow-xl perspective-card-front">
+                <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-white border border-borderLine shadow-xl perspective-card-back">
                   <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" 
+                    src="/Arpit.webp" 
                     alt="Arpit Jain" 
                     className="w-full h-full object-cover grayscale"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute bottom-6 left-6 font-archivo text-[10px] font-semibold tracking-widest text-[#faf7f3]">
-                    ARPIT JAIN // BUILDER
+                    ARPIT JAIN
                   </div>
                 </div>
 
                 {/* Back Side: Visual System/Code representation */}
-                <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-[#111111] border border-white/10 shadow-2xl flex flex-col justify-between p-6 perspective-card-back text-[#faf7f3]">
+                <div className="absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-[#111111] border border-white/10 shadow-2xl flex flex-col justify-between p-6 perspective-card-front text-[#faf7f3]">
                   {/* Mock editor header */}
                   <div className="flex items-center justify-between border-b border-white/10 pb-4">
                     <span className="font-mono text-[9px] text-white/50 tracking-wider">SYSTEM_STACK // ONLINE</span>
@@ -136,12 +150,11 @@ export default function Hero() {
             <div className="space-y-4">
               <span className="font-archivo font-extrabold text-xs tracking-wider text-accent uppercase">/ Hey!</span>
               <h2 className="font-clash text-4xl sm:text-5xl lg:text-6xl font-normal text-textPrimary tracking-tight leading-[1.1]">
-              I'm Arpit Jain, Software & AI Enthusiast.
-
+                I'm Arpit jain, Software & AI enthusiast.
               </h2>
             </div>
 
-            <div className="space-y-4 text-base md:text-lg text-textSecondary font-medium leading-relaxed max-w-3xl">
+            <div className="space-y-4 text-base md:text-lg text-textSecondary font-medium leading-relaxed max-w-2xl">
               <p>
               Currently pursuing my B.Tech at K.R. Mangalam University (Class of 2027), I enjoy turning ideas into products that solve real-world problems. My interests lie across artificial intelligence, software development, fintech, and emerging technologies.
               </p>
@@ -170,7 +183,7 @@ export default function Hero() {
               </a>
 
               <a 
-                href="Arpit.pdf"
+                href="/Arpit.pdf"
                 target="_blank"
                 rel="noreferrer"
                 className="group inline-flex items-center gap-4 bg-transparent text-[#111111] rounded-full pl-6 pr-3 py-3 font-archivo text-xs font-semibold tracking-wider uppercase hover:bg-[#111111] hover:text-[#faf7f3] transition-all shadow-sm border border-[#111111]"

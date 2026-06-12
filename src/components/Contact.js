@@ -43,7 +43,7 @@ export default function Contact() {
               href="mailto:arpitjain.contact@gmail.com" 
               className="font-clash text-xl md:text-2xl font-normal text-textPrimary hover:underline"
             >
-              arpitjain.contact@gmail.com
+              arpitj9906@gmail.com
             </a>
           </div>
 
@@ -53,11 +53,11 @@ export default function Contact() {
               SOCIAL CHANNELS
             </span>
             <div className="flex gap-4 font-sans text-xs text-textSecondary">
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-textPrimary transition-colors">
+              <a href="https://www.linkedin.com/in/arpit-jainnn/" target="_blank" rel="noreferrer" className="hover:text-textPrimary transition-colors">
                 LinkedIn
               </a>
               <span>/</span>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-textPrimary transition-colors">
+              <a href="https://github.com/arpitt-jain" target="_blank" rel="noreferrer" className="hover:text-textPrimary transition-colors">
                 GitHub
               </a>
             </div>

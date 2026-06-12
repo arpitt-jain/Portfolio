@@ -25,8 +25,8 @@ export default function Footer() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="font-clash text-4xl sm:text-5xl lg:text-[64px] leading-[1.0] font-normal text-white max-w-xl tracking-tight"
           >
-            Scaling Start-ups <br />
-            for Growth.
+            The journey <br />
+            has just begun. 
           </motion.h2>
         </div>
 
@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          <span>IN // HARYANA</span>
+          <span>IN / DELHI</span>
         </div>
       </div>
     </footer>
